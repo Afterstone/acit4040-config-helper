@@ -1,12 +1,12 @@
 [tool.poetry]
 name = "acit4040-config-helper"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["Afterstone <invisiblex@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = ">=3.8, <4.0"
 python-dotenv = "^1.0.0"
 google-cloud-secret-manager = "^2.16.4"
 
