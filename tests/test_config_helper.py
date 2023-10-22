@@ -67,7 +67,7 @@ def test_get_secret__fallback_works():
     try:
         secret = os.environ["ACH_TEST_SECRET"] = "test"
         value = ach.get_secret(
-            "ACH_TEST_SECRET", fallback_env_var_name="ACH_TEST_SECRET"
+            "ACH_TEST_SECRET_NOT_SET", fallback_env_var_name="ACH_TEST_SECRET"
         )
         assert value == secret
     finally:
@@ -82,7 +82,7 @@ def test_get_secret_file__fallback_works():
         try:
             ref_path = os.environ["ACH_TEST_SECRET_FILE"] = str(f.name)
             path = ach.get_secret_file(
-                "ACH_TEST_SECRET_FILE",
+                "ACH_TEST_SECRET_FILE_NOT_SET",
                 output_file=Path("doesnt_exist"),
                 fallback_env_var_name="ACH_TEST_SECRET_FILE",
             )
