@@ -164,7 +164,7 @@ def get_secret(
     try:
         secret_name = get_envvar_str(env_var_name)
         return _get_secret_manager_raw(secret_name).decode("utf-8")
-    except (gcp_exceptions.PermissionDenied, gcp_exceptions.NotFound):
+    except (gcp_exceptions.PermissionDenied, gcp_exceptions.NotFound, ValueError):
         if fallback_env_var_name is None:
             raise ValueError(
                 f"Failed to get secret {env_var_name} and no fallback provided"
@@ -195,7 +195,7 @@ def get_secret_file(
     try:
         secret_name = get_envvar_str(env_var_name)
         return _get_secret_manager_file(secret_name, output_file)
-    except (gcp_exceptions.PermissionDenied, gcp_exceptions.NotFound):
+    except (gcp_exceptions.PermissionDenied, gcp_exceptions.NotFound, ValueError):
         if fallback_env_var_name is None:
             raise ValueError(
                 f"Failed to get secret {env_var_name} and no fallback provided"
